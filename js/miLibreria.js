@@ -157,7 +157,7 @@ $(document).ready(function () {
     
     
     $("#tierra").click(function () {
-        miAjax("tierra.php","a=3",function(data){
+        miAjax("mision.jsp","a=3",function(data){
             $("#contec").html(data);
             $("#laImagen").click(function(){
                 alert("hola mundo");
