@@ -1,2 +1,5 @@
 RewriteEngine On
-RewriteRule ^mision.jsp$ view/mision/mision.php
+RewriteRule ^mision.jsp$ view/Mod_tierra/tierra.php
+
+#controller de tierra
+RewriteRule ^Gentabla.jsp$ controller/Mod_tierra/genTabla.php

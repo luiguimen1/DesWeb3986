@@ -10,6 +10,9 @@ and open the template in the editor.
         <title>Mi primera pagina</title>
         <link href="css/miEstilo.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+        <script src="js/jquery.validate.js" type="text/javascript"></script>
+        <script src="js/additional-methods.js" type="text/javascript"></script>
+        
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/miLibreria.js" type="text/javascript"></script>
     </head>
