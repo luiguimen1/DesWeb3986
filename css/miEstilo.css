@@ -1,0 +1,150 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31/01/2018, 09:04:10 AM
+    Author     : asus25
+*/
+
+/* por id empadrinar # */
+#contenedor{
+    position: relative;
+    top: 0px;
+    width: 1024px;
+    overflow: hidden;
+    margin: 0 auto;    
+}
+
+#enca{
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: #498D5D;
+    top: 0px;
+}
+#pie{
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: #498D5D;
+    top: 0px;
+}
+
+#contenido{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#menu{
+    position: relative;
+    width: 20%;
+    overflow: hidden;
+    background: #71BC37;
+    float: left;
+}
+
+#contec{
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+    background: #49658D;
+    float: left;
+}
+
+.cuadro25{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    float: left;
+    background: #ddffaa;
+}
+
+img{
+    border-radius: 10% 0 0 10%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+img:hover{
+    filter:  grayscale(1);
+    transform: rotate(-7deg);
+}
+
+
+#miCuadro{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    margin: 0 auto;
+}
+
+
+#calc{
+    width: 300px;
+    overflow: hidden;
+    background: #cccccc;
+    padding: 1%;
+}
+
+#ventana{
+    width: 73%;
+}
+.numero{
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+    float: left;
+}
+.numero button{
+    width: 30%;
+    height: 45px;
+}
+.operdores{
+    position: relative;
+    width: 20%;
+    float: right;
+}
+
+.operdores button{
+    width: 100%;
+    height: 25px;
+}
+@media (max-width: 600px) {
+    #contenedor{
+        width: 100%;
+    }
+    #menu{
+        width: 100%;
+    }
+    #contec{
+        width: 100%;
+        text-align: center;
+    }
+    .cuadro25{
+        width: 50%;
+    }
+}
+
+@media (max-width: 400px) {
+    #contenedor{
+        width: 100%;
+    }
+    #menu{
+        width: 100%;
+        background: yellow;
+    }
+    #contec{
+        width: 100%;
+        text-align: center;
+    }
+    .cuadro25{
+        width: 100%;
+    }
+}
+
