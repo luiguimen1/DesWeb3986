@@ -8,7 +8,7 @@
  * Metodo que permite capturar dos variable y lo muestra por pantalla;
  * @return {undefined} No retorna valor
  */
-
+var loading = 'Procesando.... <img src="img/ajax-loader.gif" alt=""/>';
 function cTI(pv) {
     return parseInt(pv);
 }
@@ -159,10 +159,44 @@ $(document).ready(function () {
     $("#tierra").click(function () {
         miAjax("mision.jsp","a=3",function(data){
             $("#contec").html(data);
-            $("#laImagen").click(function(){
-                alert("hola mundo");
-            });
-            
+            $("#forTabla").validate({
+                rules:{
+                    numero:{
+                        required:true,
+                        number:true
+                    },
+                    limite:{
+                        required:true,
+                        number:true
+                    },
+                    nombre:{
+                        required:true,
+                        rangelength:[3,70]
+                    },
+                    correo:{
+                        required:true,
+                        email:true
+                    },
+                    correo1:{
+                        equalTo: "#correo"
+                    }
+                },
+                messages:{
+                    limite:{
+                        required:"Uppps, debe ingresar el numero",
+                        number:"Pilasssss, debe ser un numero"
+                    }
+                },
+                submitHandler:function(){
+                    $("#mitabla").html(loading);
+                    var url = "Gentabla.jsp";
+                    var parametros=$("#forTabla").serialize();
+                    var collback = function(data){
+                        $("#mitabla").html(data);
+                    };
+                    miAjax(url,parametros,collback);
+                }
+            });      
         });
     });
 });

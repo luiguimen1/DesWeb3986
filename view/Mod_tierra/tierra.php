@@ -1,16 +1,40 @@
 <?php
 if ($_POST) {
     ?>
-    <div style="width: 100%;">
-        <center>
-            <h1>Esta es la TIERRA</h1>
-        </center>
+
+    <fieldset>
+        <legend style="color:#000;">Formulario de registro</legend>
         <form id="forTabla" id="forTabla">
-            <label>INgrese el numero de la tabla <input type="text" id="numero" name="numero" value=""/></label><br>
+            <div class="col-12 row">
+                <div class="form-group col-lg-5">
+                    <label for="exampleInputEmail1">Ingrese el numero</label>
+                    <input type="text" class="form-control" id="numero" name="numero" aria-describedby="numero" placeholder="Ingrese un numero">
+                    <small id="numero" class="form-text text-muted">Ingrese un numero para generar la tabla</small>
+                </div>
+
+                <div class="form-group col-lg-5">
+                    <label for="exampleInputEmail1">Ingrese el limite</label>
+                    <input type="text" class="form-control" id="limite" name="limite" aria-describedby="limite" placeholder="Ingrese un numero">
+                    <small id="limite" class="form-text text-muted">Ingrese un numero</small>
+                </div> 
+                
+            </div>
+
+
             <label>INgrese el numero limite<input type="text" id="limite" name="limite" value=""/></label><br>
+            <label>INgrese Nombre<input type="text" id="nombre" name="nombre" value=""/></label><br>
+            <label>INgrese estado<input type="text" id="estado" name="estado" value=""/></label><br>
+            <label>INgrese Cedula<input type="text" id="cc" name="cc" value=""/></label><br>
+            <label>INgrese Correo<input type="text" id="correo" name="correo" value=""/></label><br>
+            <label>INgrese confirme correo<input type="text" id="correo1" name="correo1" value=""/></label><br>
             <button id="send" name="send" type="submit">Generar</button>
         </form>
-    </div>
+
+        <div id="mitabla"></div>
+
+
+    </fieldset>
+
     <?php
 } else {
     header("location:./");

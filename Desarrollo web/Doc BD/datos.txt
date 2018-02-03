@@ -1,0 +1,159 @@
+show databases;
+create database xxxxx;
+use XXXXXX
+
+tipos de datos
+->restricciones naturales
+-->Tipo de dato.
+-->Longitud del dato
+---> Varchar (Texto - 255) 4
+---> int (4 bit)
+---> date
+--->datetime
+--->taimenstatement
+->Restricciones Artificiales
+--> primary key
+--> unique
+--> not null
+--> null
+-->default
+-->foren key
+
+create table cliente(
+id int,
+nombre varchar(70) not null,
+estado varchar(3) null default "sin");
+
+alter table cliente modify id int primary key;
+
+alter table cliente add column cc varchar(10) not null unique;
+alter table cliente modify id int auto_increment;
+
+create table art_orden(
+id int primary key auto_increment,
+fkorden int not null,
+fkarticulo int not null,
+can int not null,
+precio double not null,
+ constraint pareOrden 
+        foreign key fkorden 
+       references orden (id) 
+       on delete RESTRICT 
+       on update cascade,
+ constraint pareArticulo 
+        foreign key fkarticulo 
+       references articulo(id) 
+       on delete RESTRICT 
+       on update cascade);
+
+
+
+lenguaje SQL
+DDL -> 
+-> create - BD - table
+-> Alter
+--> add
+--->Column
+--->Constreint
+-->drop
+--->Column
+--->Constarint
+
+
+
+
+select c.nombre, c.cc, o.id, date(o.freg) FechaCompara
+from cliente c, orden o
+where c.id = o.fkcliente
+
+
+select c.nombre, c.cc, o.id, date(o.freg) from orden o inner join cliente c on c.id = o.fkcliente;
+
+CET2018
+
+nextval()
+
+
+
+
+
+
+
+
+commit;
+
+rolback;
+
+
+Comandos de alterar tablas
+alter table cliente add column barrio varchar(30);
+
+DML -> CRUD -> sentencias
+Create
+Read
+Update
+Delete
+-> Insert into zzzzz 
+atomicidad almacenar en un orden especifico.
+----> garantizar la integridad refenrecial
+----> alter table orden 
+        add constraint pareCliente 
+        foreign key (fkcliente) 
+       references cliente (id) 
+       on delete RESTRICT 
+       on update cascade;
+
+--> orden natural.
+
+
+
+-> Select
+---> consulta basica select * from xxxx;
+---> consulta con filtros       select * from xxxx 
+------>where  
+--------> a1 texto =   Like 
+--------> = compara texto semenjate pero no filtar por contenido
+--------->Like puede filtar por texto semenjante y por contenido agregando el %%
+              si se desea filtar o diferencias de May de Min despues del comando like se debe asignar
+              el comando binary
+-----> se apoya el la utilización de las tablas de verdad where
+-----> AND (y) y el Or (O)
+---> Y  
+       V V = V
+       V F = F
+       F V = F
+       F F = F
+---->O
+      V V = V
+      V F = V
+      F V = V
+      F F = F
+uniones Y(0(),0())
+
+
+
+
+
+
+
+
+
+
+-> Update
+-> Detele
+
+
+
+TCL
+DCL
+
+
+
+
+
+
+
+
+
+
+
