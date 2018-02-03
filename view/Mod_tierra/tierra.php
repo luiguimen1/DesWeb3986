@@ -17,7 +17,6 @@ if ($_POST) {
                     <input type="text" class="form-control" id="limite" name="limite" aria-describedby="limite" placeholder="Ingrese un numero">
                     <small id="limite" class="form-text text-muted">Ingrese un numero</small>
                 </div> 
-                
             </div>
 
 

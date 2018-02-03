@@ -8,18 +8,10 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Mi primera pagina</title>
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="css/custom.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/miEstilo.css" rel="stylesheet" type="text/css"/>
-        <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/popper.min.js" type="text/javascript"></script>
-        <script src="js/custom.js" type="text/javascript"></script>
-        <script src="js/jquery.validate.js" type="text/javascript"></script>
-        <script src="js/additional-methods.js" type="text/javascript"></script>
-        <script src="js/localization/messages_es.js" type="text/javascript"></script>
-        <script src="js/ajax.js" type="text/javascript"></script>
+        <?php include './Paratodos/Librerias.php'; ?>
         <script src="js/miLibreria.js" type="text/javascript"></script>
+        
+        <link href="css/miEstilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container">            
@@ -72,36 +64,36 @@ and open the template in the editor.
                                 <div class="card-header">La Calculadora</div>
                                 <div class="card-body">
                                     <div id="calc">
-                                <input id="ventana" name="ventana" readonly="readonly" type="text">
-                                <div class="numero">
-                                    <button type="none" class="btnNun">1</button>
-                                    <button type="none" class="btnNun">2</button>
-                                    <button type="none" class="btnNun">3</button>
-                                </div>
-                                <div class="operdores">
-                                    <button type="none">/</button>
-                                    <button type="none">*</button>
-                                    <button type="none">-</button>
-                                    <button type="none" id="misuma" class="btn btn-danger">+</button>
-                                    <button type="none" id="miRes">=</button>
-                                </div>
-                                <div class="numero">
-                                    <button type="none" class="btnNun">4</button>
-                                    <button type="none" class="btnNun">5</button>
-                                    <button type="none" class="btnNun">6</button>
-                                </div>
-                                <div class="numero">
-                                    <button type="none" class="btnNun">7</button>
-                                    <button type="none" class="btnNun">8</button>
-                                    <button type="none" class="btnNun">9</button>
+                                        <input id="ventana" name="ventana" readonly="readonly" type="text">
+                                        <div class="numero">
+                                            <button type="none" class="btnNun">1</button>
+                                            <button type="none" class="btnNun">2</button>
+                                            <button type="none" class="btnNun">3</button>
+                                        </div>
+                                        <div class="operdores">
+                                            <button type="none">/</button>
+                                            <button type="none">*</button>
+                                            <button type="none">-</button>
+                                            <button type="none" id="misuma" class="btn btn-danger">+</button>
+                                            <button type="none" id="miRes">=</button>
+                                        </div>
+                                        <div class="numero">
+                                            <button type="none" class="btnNun">4</button>
+                                            <button type="none" class="btnNun">5</button>
+                                            <button type="none" class="btnNun">6</button>
+                                        </div>
+                                        <div class="numero">
+                                            <button type="none" class="btnNun">7</button>
+                                            <button type="none" class="btnNun">8</button>
+                                            <button type="none" class="btnNun">9</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                                </div>
-                            </div>
 
 
 
-                            
+
 
                             <div style="width: 100%;">
                                 <div id="miCuadro"></div>
@@ -166,5 +158,6 @@ and open the template in the editor.
                 </div>
             </footer>
         </div>
+        <?php include './Paratodos/Alertas.php'; ?>
     </body>
 </html>
