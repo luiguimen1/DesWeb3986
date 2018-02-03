@@ -5,6 +5,13 @@
  */
 
 var loading = 'Procesando.... <img src="Paratodos/loading.gif" alt=""/>';
+
+jQuery.fn.reset = function () {
+    $(this).each(function () {
+        this.reset();
+    });
+};
+
 function cTI(pv) {
     return parseInt(pv);
 }

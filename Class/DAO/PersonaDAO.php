@@ -21,10 +21,21 @@ class PersonaDAO {
         $PersonaVO->setCorreo($array["correo"]);
         $PersonaVO->setEstado($array["estado"]);
         $PersonaVO->setEdad($array["edad"]);
-        $sql = "insert into cliente (nombre,estado,cc,correo,edad) values('" . $PersonaVO->getNombre() . "','" . $PersonaVO->getEstado() . "','" . $PersonaVO->getCc() . "','" . $PersonaVO->getCorreo() . "',".$PersonaVO->getEdad().");";
+        $sql = "insert into cliente (nombre,estado,cc,correo,edad) values(?,?,?,?,?);";
         $BD = new MySQL();
+        
+        $comm = $BD->getMysqli();
+        $stmp=$comm->prepare($sql);
+        $no=$PersonaVO->getNombre();
+        $es=$PersonaVO->getEstado();
+        $cc=$PersonaVO->getCc();
+        $co=$PersonaVO->getCorreo();
+        $ed=$PersonaVO->getEdad();
+        $stmp->bind_param('ssssi',$no,$es,$cc,$co,$ed);
         $res = array();
-        $res["success"] = $BD->execute_query($sql);
+        $res["success"] = $stmp->execute();
+        $stmp->close();
+        $comm->close();
         //$res["sql"] = $sql;
         echo json_encode($res);
     }

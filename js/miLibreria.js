@@ -179,8 +179,8 @@ $(document).ready(function () {
                     },
                     edad: {
                         required: true,
-                        number:true,
-                        digits:true
+                        number: true,
+                        digits: true
                     }
                 },
                 messages: {
@@ -192,32 +192,26 @@ $(document).ready(function () {
                 submitHandler: function () {
                     $("#mitabla").html(loading);
                     //alertError("Procesando..","<p>Los datos estan siendo procesados por el servidor<br>Por favor espere... "+loading+"</p>");
-
                     var collbackAceptar = function () {
-
                         var url = "CrearPersona.jsp";
                         var parametros = $("#forTabla").serialize();
                         var collback = function (data) {
                             data = $.parseJSON(data);
-                            console.log(data.success == true);
-                            //console.log(data.sql);
                             if (data.success == true) {
                                 alertPosi("Informe: ", "El usuario fue registrado");
+                                $("#forTabla").reset();
                             } else {
                                 alertError("Error #21", "El usuario no fue registrado");
                             }
-                            $("#mitabla").html();
+                            $("#mitabla").html("");
                         };
                         miAjax(url, parametros, collback);
                     };
-
                     var collbackCancelar = function () {
                         alertError("Informando", "Usted cancelo el procedimiento");
+                         $("#mitabla").html("");
                     };
                     confirmacion("Confirme la creación del Usuario", collbackAceptar, collbackCancelar);
-
-
-
                 }
             });
         });

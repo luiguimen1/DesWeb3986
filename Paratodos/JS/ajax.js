@@ -5,12 +5,18 @@
  */
 
 
-function miAjax(url,parametros,collback) {
+function miAjax(url, parametros, collback) {
     $.ajax({
+        beforeSend: function () { /*httpR es la variable global donde guardamos la conexion*/
+            $(document).ajaxStop();
+            $(document).ajaxStart();
+        },
+        //timeout: 8000,
         url: url,
         data: parametros,
         type: 'post',
         cache: false,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8;',
         beforeSend: function () {
 
         },
