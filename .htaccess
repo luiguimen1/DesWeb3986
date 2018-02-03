@@ -3,3 +3,4 @@ RewriteRule ^mision.jsp$ view/Mod_tierra/tierra.php
 
 #controller de tierra
 RewriteRule ^Gentabla.jsp$ controller/Mod_tierra/genTabla.php
+RewriteRule ^CrearPersona.jsp$ controller/Mod_tierra/CrearPersona.php

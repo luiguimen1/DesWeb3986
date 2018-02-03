@@ -9,27 +9,48 @@ function cTI(pv) {
     return parseInt(pv);
 }
 
-function alerta(pTitulo,pMensaje){
-    $("#dialog").attr("title",pTitulo);
+function alerta(pTitulo, pMensaje) {
+    $("#dialog").attr("title", pTitulo);
     $("#dialog").html(pMensaje);
     $("#dialog").dialog();
 }
 
-function alertError(pTitulo,pMensaje){
+function alertError(pTitulo, pMensaje) {
     $("#alertaError div").html(pMensaje);
     pMensaje = $("#alertaError").html();
-    alerta(pTitulo,pMensaje);
+    alerta(pTitulo, pMensaje);
 }
 
-function alertInfo(pTitulo,pMensaje){
+function alertInfo(pTitulo, pMensaje) {
     $("#alertaInfo div").html(pMensaje);
-    pMensaje = $("#alertaError").html();
-    alerta(pTitulo,pMensaje);
+    pMensaje = $("#alertaInfo").html();
+    alerta(pTitulo, pMensaje);
 }
 
-function alertPosi(pTitulo,pMensaje){
+function alertPosi(pTitulo, pMensaje) {
     $("#alertaPosi div").html(pMensaje);
-    pMensaje = $("#alertaError").html();
-    alerta(pTitulo,pMensaje);
+    pMensaje = $("#alertaPosi").html();
+    alerta(pTitulo, pMensaje);
 }
 
+
+function confirmacion(pMensaje,collbackAceptar,collbackCancelar) {
+    $("#dialog-confirm p").html(pMensaje);
+    
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+            Confirmar: function () {
+                $(this).dialog("close");
+                collbackAceptar();
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+                collbackCancelar();
+            }
+        }
+    });
+}

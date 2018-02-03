@@ -17,6 +17,12 @@ if ($_POST) {
                     <input type="text" class="form-control" id="limite" name="limite" aria-describedby="limite" placeholder="Ingrese un numero">
                     <small id="limite" class="form-text text-muted">Ingrese un numero</small>
                 </div> 
+                
+                <div class="form-group col-lg-5">
+                    <label for="edad">Ingrese la edad</label>
+                    <input type="text" class="form-control" id="edad" name="edad" aria-describedby="edad" placeholder="Ingrese un numero">
+                    <small id="edad" class="form-text text-muted">Ingrese la edad</small>
+                </div> 
             </div>
 
 

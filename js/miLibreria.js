@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global loading */
+
 /**
  * Metodo que permite capturar dos variable y lo muestra por pantalla;
  * @return {undefined} No retorna valor
@@ -174,6 +176,11 @@ $(document).ready(function () {
                     },
                     correo1: {
                         equalTo: "#correo"
+                    },
+                    edad: {
+                        required: true,
+                        number:true,
+                        digits:true
                     }
                 },
                 messages: {
@@ -184,13 +191,33 @@ $(document).ready(function () {
                 },
                 submitHandler: function () {
                     $("#mitabla").html(loading);
-                    alertError("Procesando..","<p>Los datos estan siendo procesados por el servidor<br>Por favor espere... "+loading+"</p>");
-                    var url = "Gentabla.jsp";
-                    var parametros = $("#forTabla").serialize();
-                    var collback = function (data) {
-                        $("#mitabla").html(data);
+                    //alertError("Procesando..","<p>Los datos estan siendo procesados por el servidor<br>Por favor espere... "+loading+"</p>");
+
+                    var collbackAceptar = function () {
+
+                        var url = "CrearPersona.jsp";
+                        var parametros = $("#forTabla").serialize();
+                        var collback = function (data) {
+                            data = $.parseJSON(data);
+                            console.log(data.success == true);
+                            //console.log(data.sql);
+                            if (data.success == true) {
+                                alertPosi("Informe: ", "El usuario fue registrado");
+                            } else {
+                                alertError("Error #21", "El usuario no fue registrado");
+                            }
+                            $("#mitabla").html();
+                        };
+                        miAjax(url, parametros, collback);
                     };
-                    miAjax(url, parametros, collback);
+
+                    var collbackCancelar = function () {
+                        alertError("Informando", "Usted cancelo el procedimiento");
+                    };
+                    confirmacion("Confirme la creación del Usuario", collbackAceptar, collbackCancelar);
+
+
+
                 }
             });
         });

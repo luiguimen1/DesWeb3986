@@ -3,9 +3,9 @@
 class Datos {
     
     private $hostname = 'localhost';
-    private $usuario = '';
-    private $clave = '';
-    private $db = '';
+    private $usuario = 'web';
+    private $clave = 'web';
+    private $db = 'web3986';
 
     function getPre() {
         return $this->pre;
