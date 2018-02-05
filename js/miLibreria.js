@@ -279,11 +279,12 @@ function proceso(datos) {
         tr.append("<td>" + tmp["freg"] + "</td>");
         tr.append("<td>" + tmp["correo"] + "</td>");
         tr.append("<td>" + tmp["edad"] + "</td>");
-        tr.append('<td scope="col"><button class="modificar btn btn-info">Modificar</button></td>');
+        tr.append('<td scope="col"><button cod="' + tmp["id"] + '" class="modificar btn btn-info">Modificar</button></td>');
         tr.append('<td scope="col"><button cod="' + tmp["id"] + '" class="eliminar btn btn-danger">Eliminar</button></td>');
         $("#tabData").append(tr);
     }
     FunnCEliminar();
+    funnModificar();
 }
 
 function FunnCEliminar() {
@@ -296,11 +297,11 @@ function FunnCEliminar() {
                 var parametro = "id=" + idEliminar;
                 var collback = function (datos) {
                     datos = $.parseJSON(datos);
-                    if(datos.success==true){
-                        alertPosi("Comunicado","El cliente fue eliminado");
+                    if (datos.success == true) {
+                        alertPosi("Comunicado", "El cliente fue eliminado");
                         elemto.parent().parent().remove();
-                    }else{
-                        alertError("Error #23","El cliente no fue eliminado por tiene vinculaciones.")
+                    } else {
+                        alertError("Error #23", "El cliente no fue eliminado por tiene vinculaciones.")
                     }
                 };
                 miAjax(url, parametro, collback);
@@ -309,6 +310,90 @@ function FunnCEliminar() {
 
             };
             confirmacion("Esta seguro de eliminar al cliente", collAceptar, collCancelar);
+        });
+    });
+}
+
+function funnModificar() {
+    $(document).ready(function () {
+        $(".modificar").click(function () {
+            var idModificar = $(this).attr("cod");
+            miAjax("mision.jsp", "a=3", function (data) {
+                var elIdCliente;
+                var url = "FiltroCliente.jsp";
+                var parametro = "id=" + idModificar;
+                var collback = function (datos) {
+                    datos = $.parseJSON(datos);
+                    datos = datos[0];
+                    $("#nombre").val(datos.nombre);
+                    $("#cc").val(datos.cc);
+                    $("#estado").val(datos.estado);
+                    $("#correo").val(datos.correo);
+                    $("#correo1").val(datos.correo);
+                    $("#edad").val(datos.edad);
+                    $("#send").html("Modificar");
+                    elIdCliente = datos.id;
+                };
+                miAjax(url, parametro, collback);
+
+
+                $("#contec").html(data);
+                $("#contec legend").html("Formulario de Actualizacion de datos del cliente");
+                $("#forTabla").validate({
+                    rules: {
+                        numero: {
+                            required: true,
+                            number: true
+                        },
+                        limite: {
+                            required: true,
+                            number: true
+                        },
+                        nombre: {
+                            required: true,
+                            rangelength: [3, 70]
+                        },
+                        correo: {
+                            required: true,
+                            email: true
+                        },
+                        correo1: {
+                            equalTo: "#correo"
+                        },
+                        edad: {
+                            required: true,
+                            number: true,
+                            digits: true
+                        }
+                    },
+                    messages: {
+                        limite: {
+                            required: "Uppps, debe ingresar el numero",
+                            number: "Pilasssss, debe ser un numero"
+                        }
+                    },
+                    submitHandler: function () {
+                        var collbackAceptar = function () {
+                            var url = "modificarCliente.jsp";
+                            var parametro = $("#forTabla").serialize() + "&id=" + elIdCliente;
+                            var collback = function (datos) {
+                                alert(datos);
+                                datos = $.parseJSON(datos);
+                                if (datos.success == true) {
+                                    alertPosi("Comunicado", "El cliente fue actualizado");
+                                } else {
+                                    alertError("Error #25", "El cliente no fue actualizado<br>Verifique existencia del cliente.")
+                                }
+                            };
+                            miAjax(url, parametro, collback);
+                        };
+                        var collbackCancelar = function () {
+
+                        };
+                        confirmacion("Esta seguro de Modificar los datos del cliente", collbackAceptar, collbackCancelar);
+                    }
+                });
+            });
         });
     });
 }

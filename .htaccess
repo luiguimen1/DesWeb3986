@@ -8,3 +8,4 @@ RewriteRule ^ListaCliente.jsp$ view/Mod_tierra/ListaCliente.php
 RewriteRule ^SoloListaCliente.jsp$ controller/Mod_tierra/SoloLista.php
 RewriteRule ^FiltroCliente.jsp$ controller/Mod_tierra/FiltroCliente.php
 RewriteRule ^eliminarCliente.jsp$ controller/Mod_tierra/eliminarCliente.php
+RewriteRule ^modificarCliente.jsp$ controller/Mod_tierra/modificarCliente.php

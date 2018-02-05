@@ -76,14 +76,40 @@ class PersonaDAO {
         $stmp = $comm->prepare($sql);
         $id = $PersonaVO->getId();
         $stmp->bind_param("i", $id);
-        
+
         $res = array();
         $res["success"] = $stmp->execute();
-        
+
         $stmp->close();
         $comm->close();
-        
+
         echo json_encode($res);
     }
 
+    function modificar($array) {
+        $PersonaVO = new PersonaVO();
+        $PersonaVO->setId($array["id"]);
+        $PersonaVO->setNombre($array["nombre"]);
+        $PersonaVO->setCc($array["cc"]);
+        $PersonaVO->setCorreo($array["correo"]);
+        $PersonaVO->setEstado($array["estado"]);
+        $PersonaVO->setEdad($array["edad"]);
+        $sql = "update cliente set nombre = ?, cc = ?, estado = ?, correo = ?, edad = ?  where id = ?;";
+
+        $bd = new MySQL();
+        $comm = $bd->getMysqli();
+        $stmp = $comm->prepare($sql);
+        $no = $PersonaVO->getNombre();
+        $cc = $PersonaVO->getCc();
+        $estado = $PersonaVO->getEstado();
+        $correo = $PersonaVO->getCorreo();
+        $edad = $PersonaVO->getEdad();
+        $id = $PersonaVO->getId();
+        $stmp->bind_param("ssssii", $no, $cc, $estado, $correo, $edad, $id);
+        $res = array();
+        $res["success"] = $stmp->execute();
+        $stmp->close();
+        $comm->close();
+        echo json_encode($res);
+    }
 }

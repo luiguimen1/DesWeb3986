@@ -79,10 +79,11 @@ CREATE TABLE `cliente` (
   `cc` varchar(10) NOT NULL,
   `freg` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `correo` varchar(70) NOT NULL,
+  `edad` int(3) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cc` (`cc`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +92,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (2,'Eduardo','wse','321','2018-01-30 12:59:19','321@notiene.correo'),(5,'pedro','eds','12342334','2018-01-30 12:59:19','12342334@notiene.correo'),(6,'andres','hol','32131231','2018-01-30 12:59:19','32131231@notiene.correo'),(7,'karo','new','31231','2018-01-30 12:59:54','31231@notiene.correo'),(8,'si funciona','123','123456','2018-01-30 13:03:11','123456@notiene.correo');
+INSERT INTO `cliente` VALUES (2,'Eduardo','wse','321','2018-01-30 12:59:19','321@notiene.correo',0),(5,'pedro','eds','12342334','2018-01-30 12:59:19','12342334@notiene.correo',0),(6,'andres','hol','32131231','2018-01-30 12:59:19','32131231@notiene.correo',0);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-02 13:32:11
+-- Dump completed on 2018-02-05 10:47:55
