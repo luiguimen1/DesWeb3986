@@ -1,7 +1,7 @@
 <?php
 
 class Datos {
-    
+
     private $hostname = 'localhost';
     private $usuario = 'web';
     private $clave = 'web';
@@ -15,6 +15,10 @@ class Datos {
         
     }
 
+    /**
+     * Metodo que retorna el nombre del HOst
+     * @return type variable de tipo String
+     */
     public function get_hostname() {
         return $this->hostname;
     }
