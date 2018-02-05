@@ -1599,3 +1599,21 @@ if ( $.ajaxPrefilter ) {
 }
 return $;
 }));
+
+jQuery.validator.addMethod("EsTextoMinu", function (value, element) {
+    return this.optional(element) || /^[a-z ]+$/i.test(value);
+}, function (element) {
+    return "Solo letras en Miniscula";
+});
+
+jQuery.validator.addMethod("EsTextoMayus", function (value, element) {
+    return this.optional(element) || /^[A-Z ]+$/i.test(value);
+}, function (element) {
+    return "Solo letras en Miniscula";
+});
+
+jQuery.validator.addMethod("EsTexto", function (value, element) {
+    return this.optional(element) || /^[A-Z a-z]+$/i.test(value);
+}, function (element) {
+    return "Solo de ser texto a-Z";
+});

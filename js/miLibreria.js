@@ -218,3 +218,34 @@ $(document).ready(function () {
     });
 });
 
+
+
+
+$(document).ready(function(){
+    $("#clienteBus").click(function(){
+        var url ="ListaCliente.jsp";
+        var parametros="a=false";
+        var collback=function(datos){
+            $("#contec").html(datos);
+            
+            $("#forBusca").validate({
+               rules:{
+                   nombre:{
+                       EsTexto:true
+                   },
+                   cc:{
+                       digits:true,
+                       number:true
+                   }
+               },
+               messages:{
+                   EsTexto:"No puede llevar numeros o digitos"
+               },
+               submitHandler:function(){
+                   
+               }
+            });
+        };
+        miAjax(url, parametros, collback);
+    });
+});

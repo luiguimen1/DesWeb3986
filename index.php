@@ -28,7 +28,7 @@ and open the template in the editor.
                                 <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Cliente</a>
+                                <a class="nav-link" href="javascript:void(0)" id="clienteBus">Cliente Buscar</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Producto</a>

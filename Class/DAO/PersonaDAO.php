@@ -39,5 +39,12 @@ class PersonaDAO {
         //$res["sql"] = $sql;
         echo json_encode($res);
     }
+    
+    
+    function todos(){
+        $sql = "select * from cliente;";
+        $bd = new MySQL();
+        return $bd->query($sql);
+    }
 
 }
