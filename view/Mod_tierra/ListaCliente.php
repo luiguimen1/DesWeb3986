@@ -22,7 +22,7 @@ if ($_POST) {
                         <input type="text" class="form-control" id="cc" name="cc" placeholder="Ingrese cc">
                     </div>
                 </fieldset>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
         </div>
     </section>
@@ -52,31 +52,10 @@ if ($_POST) {
     </section>
     <script>
         $(document).ready(function () {
-
-            function proceso(datos) {
-                $("#tabData").html("");
-                for (var i = 0; i < datos.length; i++) {
-                    var tmp = datos[i];
-                    var tr = $("<tr></tr>");
-                    tr.append("<td>" + tmp["id"] + "</td>");
-                    tr.append("<td>" + tmp["nombre"] + "</td>");
-                    tr.append("<td>" + tmp["estado"] + "</td>");
-                    tr.append("<td>" + tmp["cc"] + "</td>");
-                    tr.append("<td>" + tmp["freg"] + "</td>");
-                    tr.append("<td>" + tmp["correo"] + "</td>");
-                    tr.append("<td>" + tmp["edad"] + "</td>");
-                    tr.append('<td scope="col"><button class="modificar btn btn-info">Modificar</button></td>');
-                    tr.append('<td scope="col"><button class="eliminar btn btn-danger">Eliminar</button></td>');
-                    $("#tabData").append(tr);
-                }
-            }
             $("#loadinggg").html(loading);
-
             var datos = miAjax("SoloListaCliente.jsp", "a=1", function (datos) {
-                
                 proceso($.parseJSON(datos));
             });
-
         });
     </script>
 

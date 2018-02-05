@@ -209,7 +209,7 @@ $(document).ready(function () {
                     };
                     var collbackCancelar = function () {
                         alertError("Informando", "Usted cancelo el procedimiento");
-                         $("#mitabla").html("");
+                        $("#mitabla").html("");
                     };
                     confirmacion("Confirme la creación del Usuario", collbackAceptar, collbackCancelar);
                 }
@@ -221,31 +221,94 @@ $(document).ready(function () {
 
 
 
-$(document).ready(function(){
-    $("#clienteBus").click(function(){
-        var url ="ListaCliente.jsp";
-        var parametros="a=false";
-        var collback=function(datos){
+$(document).ready(function () {
+    $("#clienteBus").click(function () {
+        var url = "ListaCliente.jsp";
+        var parametros = "a=false";
+        var collback = function (datos) {
             $("#contec").html(datos);
-            
+
             $("#forBusca").validate({
-               rules:{
-                   nombre:{
-                       EsTexto:true
-                   },
-                   cc:{
-                       digits:true,
-                       number:true
-                   }
-               },
-               messages:{
-                   EsTexto:"No puede llevar numeros o digitos"
-               },
-               submitHandler:function(){
-                   
-               }
+                rules: {
+                    nombre: {
+                        EsTexto: true,
+                        minlength: 3
+                    },
+                    cc: {
+                        digits: true,
+                        number: true,
+                        minlength: 5
+                    }
+                },
+                messages: {
+                    EsTexto: "No puede llevar numeros o digitos"
+                },
+                submitHandler: function () {
+                    if ($("#cc").val() == "" && $("#nombre").val() == "") {
+                        alertError("Error #22", "Debe Ingresar al menos un criterio de Busqueda.");
+                    } else {
+                        $("#tabData").html("<tr><td colspan='9'>" + loading + "</td><tr>");
+                        var url = "FiltroCliente.jsp";
+                        var parametros = $("#forBusca").serialize();
+                        var collback = function (datos) {
+                            if (datos == 0) {
+                                alertInfo("Información del servidor", "<h4>No existen criterios de comparación</h4>")
+                                $("#tabData").html("<tr><td colspan='9'></td><tr>");
+                            } else {
+                                proceso($.parseJSON(datos));
+                            }
+                        };
+                        miAjax(url, parametros, collback);
+                    }
+                }
             });
         };
         miAjax(url, parametros, collback);
     });
 });
+
+function proceso(datos) {
+    $("#tabData").html("");
+    for (var i = 0; i < datos.length; i++) {
+        var tmp = datos[i];
+        var tr = $("<tr></tr>");
+        tr.append("<td>" + tmp["id"] + "</td>");
+        tr.append("<td>" + tmp["nombre"] + "</td>");
+        tr.append("<td>" + tmp["estado"] + "</td>");
+        tr.append("<td>" + tmp["cc"] + "</td>");
+        tr.append("<td>" + tmp["freg"] + "</td>");
+        tr.append("<td>" + tmp["correo"] + "</td>");
+        tr.append("<td>" + tmp["edad"] + "</td>");
+        tr.append('<td scope="col"><button class="modificar btn btn-info">Modificar</button></td>');
+        tr.append('<td scope="col"><button cod="' + tmp["id"] + '" class="eliminar btn btn-danger">Eliminar</button></td>');
+        $("#tabData").append(tr);
+    }
+    FunnCEliminar();
+}
+
+function FunnCEliminar() {
+    $(document).ready(function () {
+        $(".eliminar").click(function () {
+            var idEliminar = $(this).attr("cod");
+            var elemto = $(this);
+            var collAceptar = function () {
+                var url = "eliminarCliente.jsp";
+                var parametro = "id=" + idEliminar;
+                var collback = function (datos) {
+                    datos = $.parseJSON(datos);
+                    if(datos.success==true){
+                        alertPosi("Comunicado","El cliente fue eliminado");
+                        elemto.parent().parent().remove();
+                    }else{
+                        alertError("Error #23","El cliente no fue eliminado por tiene vinculaciones.")
+                    }
+                };
+                miAjax(url, parametro, collback);
+            };
+            var collCancelar = function () {
+
+            };
+            confirmacion("Esta seguro de eliminar al cliente", collAceptar, collCancelar);
+        });
+    });
+}

@@ -62,6 +62,7 @@ if ($_POST) {
                 </tbody>
             </table>
         </div>
+        
     </section>
     <?php
 
